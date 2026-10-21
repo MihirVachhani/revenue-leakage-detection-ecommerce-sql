@@ -50,6 +50,40 @@ GMV = SUM(price)
 - Marketplace Operations
 
 ---
+
+# KPI 2: Total Freight Cost
+
+## Business Definition
+
+Total shipping cost associated with fulfilling customer orders.
+
+## Business Importance
+
+High freight costs can reduce economic efficiency and indicate operational inefficiencies.
+
+## Tables Used
+
+### order_items
+
+Reason:
+
+Freight cost is captured at the order item level.
+
+## Columns Used
+
+- freight_value
+
+## Calculation Logic
+
+Freight Cost = SUM(freight_value)
+
+## Stakeholders
+
+- Operations Team
+- Logistics Team
+
+---
+
 # KPI 3: Freight Burden Ratio
 
 ## Business Definition
@@ -204,3 +238,112 @@ actual delivery date > estimated delivery date
 - Customer Experience Team
 
 ---
+
+# KPI 7: Average Review Score
+
+## Business Definition
+
+Average customer rating submitted after purchase.
+
+## Business Importance
+
+Review scores act as a proxy for customer satisfaction and overall purchase experience.
+
+## Tables Used
+
+### reviews
+
+## Columns Used
+
+- review_score
+
+## Calculation Logic
+
+AVG(review_score)
+
+## Scale
+
+1 = Very Dissatisfied
+
+5 = Very Satisfied
+
+## Stakeholders
+
+- Customer Experience Team
+- Seller Performance Team
+
+---
+
+# KPI 8: Seller Risk Score
+
+## Business Definition
+
+A composite performance measure used to identify sellers associated with operational problems.
+
+## Business Components
+
+- Delivery delays
+- Low review scores
+- High cancellation exposure
+- Revenue impact
+
+## Tables Used
+
+- sellers
+- order_items
+- orders
+- reviews
+
+## Business Importance
+
+Used to prioritize seller investigations.
+
+## Stakeholders
+
+- Seller Performance Team
+
+---
+
+# KPI 9: Revenue Leakage Exposure
+
+## Business Definition
+
+Estimated operational revenue at risk due to failed or problematic orders.
+
+## Revenue Leakage Indicators
+
+- Cancelled orders
+- Unavailable orders
+- Delayed deliveries
+- Low review scores
+
+## Tables Used
+
+- orders
+- order_items
+- reviews
+
+## Business Importance
+
+Provides a unified view of where operational failures are concentrated.
+
+## Stakeholders
+
+- Executive Leadership
+- Operations Team
+
+---
+
+# KPI Limitations
+
+The dataset does not contain:
+
+- product costs
+- refunds
+- returns
+- commissions
+- marketing spend
+
+Therefore:
+
+Revenue leakage is measured using operational and customer-experience indicators rather than true profitability metrics.
