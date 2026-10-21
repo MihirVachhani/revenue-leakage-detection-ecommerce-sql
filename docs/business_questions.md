@@ -43,3 +43,78 @@ Monthly GMV
 
 Leadership Team
 
+---
+
+## BQ3
+
+Which product categories generate the most revenue?
+
+### Why It Matters
+
+Identifies key revenue-driving product segments.
+
+### KPI
+
+Revenue by Category
+
+### Stakeholder
+
+Commercial Team
+
+---
+
+# Theme 2: Revenue Leakage Investigation
+
+## BQ4
+
+What percentage of orders are cancelled?
+
+### Why It Matters
+
+Cancelled orders represent unrealized revenue opportunities.
+
+### KPI
+
+Cancellation Rate
+
+### Stakeholder
+
+Operations Team
+
+---
+
+## BQ5
+
+What percentage of orders become unavailable?
+
+### Why It Matters
+
+Unavailable products indicate seller or inventory problems.
+
+### KPI
+
+Unavailable Rate
+
+### Stakeholder
+
+Seller Management Team
+
+---
+
+## BQ6
+
+Which product categories contribute most to cancelled or unavailable orders?
+
+### Why It Matters
+
+Identifies operational weaknesses by category.
+
+### KPI
+
+Cancellation Exposure
+
+### Stakeholder
+
+Operations Team
+
+---
