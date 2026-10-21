@@ -2,6 +2,7 @@
 ## Revenue Leakage Detection in an E-Commerce Marketplace
 
 ---
+
 # Primary Business Question
 
 Which operational factors create the greatest revenue leakage risk within the marketplace?
@@ -27,6 +28,7 @@ GMV
 Executive Leadership
 
 ---
+
 ## BQ2
 
 How has marketplace revenue changed over time?
@@ -118,3 +120,183 @@ Cancellation Exposure
 Operations Team
 
 ---
+
+# Theme 3: Delivery and Fulfilment Performance
+
+## BQ7
+
+How frequently are deliveries delayed?
+
+### Why It Matters
+
+Late deliveries negatively impact customer experience.
+
+### KPI
+
+Delivery Delay Rate
+
+### Stakeholder
+
+Logistics Team
+
+---
+
+## BQ8
+
+Which sellers have the worst delivery performance?
+
+### Why It Matters
+
+Identifies fulfilment risk contributors.
+
+### KPI
+
+Seller Delay Rate
+
+### Stakeholder
+
+Seller Performance Team
+
+---
+
+## BQ9
+
+Which states or regions experience the highest delivery delays?
+
+### Why It Matters
+
+Highlights geographic operational issues.
+
+### KPI
+
+Regional Delay Rate
+
+### Stakeholder
+
+Operations Team
+
+---
+
+# Theme 4: Customer Experience
+
+## BQ10
+
+What is the average customer review score?
+
+### Why It Matters
+
+Measures overall marketplace experience.
+
+### KPI
+
+Average Review Score
+
+### Stakeholder
+
+Customer Experience Team
+
+---
+
+## BQ11
+
+How do review scores vary across product categories?
+
+### Why It Matters
+
+Identifies categories creating poor customer experiences.
+
+### KPI
+
+Category Review Score
+
+### Stakeholder
+
+Category Managers
+
+---
+
+## BQ12
+
+Do delayed deliveries result in lower customer ratings?
+
+### Why It Matters
+
+Quantifies the customer impact of logistics problems.
+
+### KPI
+
+Review Score by Delivery Status
+
+### Stakeholder
+
+Operations Team
+
+---
+
+# Theme 5: Seller Risk Analysis
+
+## BQ13
+
+Which sellers generate the highest revenue?
+
+### Why It Matters
+
+Identifies strategic seller partners.
+
+### KPI
+
+Seller GMV
+
+### Stakeholder
+
+Seller Team
+
+---
+
+## BQ14
+
+Which sellers generate high revenue but receive poor reviews?
+
+### Why It Matters
+
+High-impact sellers with customer experience issues require immediate attention.
+
+### KPI
+
+Seller Risk Score
+
+### Stakeholder
+
+Seller Performance Team
+
+---
+
+## BQ15
+
+Which sellers contribute most to revenue leakage indicators?
+
+### Why It Matters
+
+Supports prioritization of intervention efforts.
+
+### KPI
+
+Revenue Leakage Exposure
+
+### Stakeholder
+
+Executive Leadership
+
+---
+
+# Expected Business Outcome
+
+The final analysis will identify:
+
+1. Operational drivers of revenue leakage.
+2. High-risk sellers requiring intervention.
+3. Categories associated with fulfilment and customer experience issues.
+4. Geographic areas with delivery inefficiencies.
+5. Actionable opportunities to improve marketplace performance.
+
+The final recommendations will prioritize interventions based on business impact and operational feasibility.
