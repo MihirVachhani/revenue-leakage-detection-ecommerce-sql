@@ -50,3 +50,157 @@ GMV = SUM(price)
 - Marketplace Operations
 
 ---
+# KPI 3: Freight Burden Ratio
+
+## Business Definition
+
+The proportion of shipping cost relative to product revenue.
+
+## Business Importance
+
+A high freight burden suggests inefficient fulfilment economics and potential revenue leakage.
+
+## Tables Used
+
+### order_items
+
+## Columns Used
+
+- price
+- freight_value
+
+## Calculation Logic
+
+Freight Burden Ratio =
+SUM(freight_value)
+/
+SUM(price)
+
+## Interpretation
+
+Higher values indicate greater operational expenses relative to sales value.
+
+## Stakeholders
+
+- Operations
+- Finance
+- Executive Leadership
+
+---
+
+# KPI 4: Cancellation Rate
+
+## Business Definition
+
+Percentage of total orders that were cancelled before fulfilment.
+
+## Business Importance
+
+Cancelled orders represent unrealized marketplace revenue and customer dissatisfaction.
+
+## Tables Used
+
+### orders
+
+Reason:
+
+Order status is tracked in the orders table.
+
+## Columns Used
+
+- order_status
+
+## Calculation Logic
+
+Cancellation Rate =
+Cancelled Orders
+/
+Total Orders
+
+Where:
+
+order_status = 'canceled'
+
+## Stakeholders
+
+- Marketplace Operations
+- Executive Leadership
+
+---
+
+# KPI 5: Unavailable Order Rate
+
+## Business Definition
+
+Percentage of orders marked as unavailable.
+
+## Business Importance
+
+Unavailable orders indicate inventory, supply chain, or seller-related failures.
+
+## Tables Used
+
+### orders
+
+## Columns Used
+
+- order_status
+
+## Calculation Logic
+
+Unavailable Rate =
+Unavailable Orders
+/
+Total Orders
+
+Where:
+
+order_status = 'unavailable'
+
+## Stakeholders
+
+- Seller Performance Team
+- Operations Team
+
+---
+
+# KPI 6: Delivery Delay Rate
+
+## Business Definition
+
+Percentage of delivered orders that arrived after the estimated delivery date.
+
+## Business Importance
+
+Late deliveries negatively impact customer experience and may contribute indirectly to future revenue loss.
+
+## Tables Used
+
+### orders
+
+Reason:
+
+Both actual delivery and promised delivery dates exist in this table.
+
+## Columns Used
+
+- order_delivered_customer_date
+- order_estimated_delivery_date
+
+## Calculation Logic
+
+Late Deliveries
+/
+Delivered Orders
+
+Where:
+
+actual delivery date > estimated delivery date
+
+## Stakeholders
+
+- Logistics
+- Operations
+- Customer Experience Team
+
+---
