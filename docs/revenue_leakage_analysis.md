@@ -427,3 +427,93 @@ This framework will classify sellers into:
 - Low Risk
 
 and quantify seller-level revenue leakage exposure throughout the marketplace.
+---
+
+# Section 11: Seller Delay Rate Analysis
+
+## Related Business Question
+
+BQ8
+
+### Business Question
+
+Which sellers experience the highest delivery delay rates?
+
+### Result
+
+| Seller ID | Total Orders | Delayed Orders | Delay Rate |
+|------------|------------:|------------:|------------:|
+| ede0c03645598cdfc63ca8237acbe73d | 50 | 16 | 32.00% |
+| 54965bbe3e4f07ae045b90b0b8541f52 | 86 | 26 | 30.23% |
+| 835f0f7810c76831d6c7d24c7a646d4d | 50 | 15 | 30.00% |
+| 2a1348e9addc1af5aaa619b1a3679d6b | 55 | 15 | 27.27% |
+| 6039e27294dc75811c0d8a39069f52c0 | 75 | 19 | 25.33% |
+
+### Interpretation
+
+Several sellers demonstrate delay rates exceeding 25%.
+
+This means more than one quarter of customer orders associated with these sellers arrive later than promised.
+
+Such fulfilment performance creates elevated operational risk because customer satisfaction has already been shown to decline significantly when deliveries are delayed.
+
+These sellers should be prioritised for operational investigation.
+
+---
+
+# Section 12: Seller Risk Framework
+
+## Related Business Questions
+
+- BQ14
+- BQ15
+
+### Business Objective
+
+Not all sellers contribute equally to marketplace risk.
+
+A seller generating significant revenue while simultaneously:
+
+- Delivering orders late
+- Receiving poor customer reviews
+- Creating customer dissatisfaction
+
+represents a much greater risk than a low-revenue seller with identical performance issues.
+
+To prioritise intervention efforts, a Seller Risk Framework was developed.
+
+---
+
+## Risk Factors Evaluated
+
+### Revenue Impact
+
+Measures how much marketplace revenue depends on a seller.
+
+### Delivery Performance
+
+Measures the percentage of delayed orders.
+
+### Customer Satisfaction
+
+Measured using average review score.
+
+---
+
+## Risk Logic
+
+### High Risk Seller
+
+Review Score < 4.0
+
+AND
+
+Delay Rate > 15%
+
+### Medium Risk Seller
+
+Review Score between 4.0 and 4.2
+
+OR
+
+Delay Rate between
