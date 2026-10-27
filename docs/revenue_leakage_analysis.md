@@ -234,3 +234,196 @@ The next phase will investigate:
 - Seller-level risk exposure
 
 The objective is to identify where operational improvements can generate the greatest business benefit.
+---
+
+# Section 7: Product Categories Most Affected by Delivery Delays
+
+## Related Business Question
+
+BQ7
+
+### Business Question
+
+Which product categories are associated with the highest delayed revenue exposure?
+
+### Result
+
+| Category | Delayed Orders | Delayed Revenue |
+|-----------|-----------:|-----------:|
+| beleza_saude | 857 | 112,476.28 |
+| relogios_presentes | 485 | 104,208.59 |
+| cama_mesa_banho | 920 | 92,757.47 |
+| esporte_lazer | 625 | 85,365.79 |
+| informatica_acessorios | 594 | 73,859.49 |
+| automotivo | 343 | 71,335.51 |
+| moveis_decoracao | 688 | 68,801.03 |
+| cool_stuff | 251 | 50,256.70 |
+| utilidades_domesticas | 441 | 46,932.07 |
+| bebes | 262 | 41,822.75 |
+
+### Interpretation
+
+Many of the marketplace's highest-revenue categories are also heavily represented within delayed deliveries.
+
+Particularly concerning categories include:
+
+- Health & Beauty
+- Watches & Gifts
+- Home & Bath
+- Sports & Leisure
+
+These categories generate substantial revenue and therefore expose the marketplace to a greater risk of customer dissatisfaction when delivery performance fails.
+
+### Business Impact
+
+Operational improvements in these categories could positively affect a large share of marketplace revenue.
+
+---
+
+# Section 8: Sellers Contributing Most to Delivery Delay Exposure
+
+## Related Business Question
+
+BQ8
+
+### Business Question
+
+Which sellers contribute most to delayed revenue exposure?
+
+### Result
+
+| Seller ID | Delayed Orders | Delayed Revenue |
+|------------|-----------:|-----------:|
+| 4869f7a5dfa277a7dca6462dcf3b52b2 | 133 | 26,853.80 |
+| 4a3ca9315b744ce9f8e9374361493884 | 214 | 22,507.69 |
+| b1b3948701c5c72445495bd161b83a4c | 9 | 17,999.91 |
+| 7c67e1448b00f6e969d365cea6b010ab | 130 | 17,756.98 |
+| fa1c13f2614d7b5c4749cbc52fecda94 | 59 | 16,104.40 |
+
+### Interpretation
+
+A relatively small number of sellers contribute disproportionately to delayed revenue exposure.
+
+These sellers warrant further investigation because delivery failures associated with them can affect large amounts of marketplace revenue.
+
+### Business Impact
+
+Improving fulfilment performance among a handful of high-impact sellers could significantly reduce customer dissatisfaction.
+
+---
+
+# Section 9: Geographic Delivery Delay Hotspots
+
+## Related Business Question
+
+BQ9
+
+### Business Question
+
+Which geographic regions experience the largest number of delayed deliveries?
+
+### Result
+
+| State | Delayed Orders |
+|----------|-----------:|
+| SP | 2,387 |
+| RJ | 1,664 |
+| MG | 637 |
+| BA | 457 |
+| RS | 382 |
+| SC | 346 |
+| PR | 246 |
+| ES | 244 |
+
+### Interpretation
+
+The highest number of delayed deliveries is concentrated within:
+
+- São Paulo (SP)
+- Rio de Janeiro (RJ)
+- Minas Gerais (MG)
+
+These states account for a significant portion of marketplace activity and therefore represent critical logistics regions.
+
+### Business Impact
+
+Operational improvements in these regions could produce an outsized reduction in delivery-related customer dissatisfaction.
+
+---
+
+# Section 10: High-Revenue Sellers with Customer Satisfaction Risks
+
+## Related Business Question
+
+BQ14
+
+### Business Question
+
+Are high-revenue sellers also associated with poor customer satisfaction?
+
+### Result
+
+| Seller ID | Revenue | Average Review Score |
+|------------|-----------:|-----------:|
+| 7c67e1448b00f6e969d365cea6b010ab | 188,017.85 | 3.35 |
+| 4a3ca9315b744ce9f8e9374361493884 | 200,561.42 | 3.80 |
+| 1025f0e2d44d7041d6cf58b6550e0bfa | 139,484.38 | 3.85 |
+| 6560211a19b47992c3666cc44a7e94c0 | 122,484.82 | 3.91 |
+
+### Interpretation
+
+Several high-revenue sellers receive below-average customer ratings.
+
+This is concerning because poor customer experiences associated with major revenue contributors can have a disproportionately large impact on marketplace reputation and repeat purchasing behaviour.
+
+### Business Impact
+
+These sellers represent priority candidates for operational review and performance improvement initiatives.
+
+---
+
+# Updated Revenue Leakage Risk Assessment
+
+## Highest Risk Area
+
+✅ Delivery Performance
+
+Evidence:
+
+- 1.15M revenue associated with delayed deliveries.
+- Average review score falls from 4.29 to 2.57 when deliveries are delayed.
+- Multiple high-value categories are affected.
+- Delay hotspots exist across several major states.
+
+---
+
+## Emerging Seller Risk Indicators
+
+Several high-revenue sellers exhibit:
+
+- Elevated delivery delay exposure.
+- Below-average customer review scores.
+- Significant marketplace revenue influence.
+
+These sellers will be analysed further through a dedicated Seller Risk Score Framework.
+
+---
+
+# Next Phase: Seller Risk Framework
+
+The next stage of analysis will combine:
+
+- Revenue Contribution
+- Delivery Delay Rate
+- Customer Satisfaction
+- Order Volume
+
+to create a Seller Risk Score.
+
+This framework will classify sellers into:
+
+- High Risk
+- Medium Risk
+- Low Risk
+
+and quantify seller-level revenue leakage exposure throughout the marketplace.
