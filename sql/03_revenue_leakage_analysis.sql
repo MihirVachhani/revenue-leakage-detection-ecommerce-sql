@@ -169,3 +169,57 @@ HAVING revenue > 100000
 ORDER BY avg_review_score ASC;
 
 
+/*
+SELLER PERFORMANCE SCORECARD
+Purpose: Build a seller-level operational risk profile.
+Metrics Included:
+1. Revenue
+2. Delayed Orders
+3. Average Review Score
+*/
+SELECT 
+    oi.seller_id,
+    ROUND(SUM(oi.price), 2) AS revenue,
+    COUNT(DISTINCT oi.order_id) AS orders,
+    SUM(CASE
+        WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+        ELSE 0
+    END) AS delayed_orders,
+    ROUND(AVG(r.review_score), 2) AS avg_review_score
+FROM
+    order_items oi
+        JOIN
+    orders o ON oi.order_id = o.order_id
+        LEFT JOIN
+    reviews r ON o.order_id = r.order_id
+GROUP BY oi.seller_id
+HAVING revenue > 50000
+ORDER BY revenue DESC;
+
+
+/*
+SELLER DELAY RATE
+Purpose: Not all delayed orders create the same business risk.
+KPI: Seller Delay Rate
+*/
+SELECT 
+    oi.seller_id,
+    COUNT(*) AS total_orders,
+    SUM(CASE
+        WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+        ELSE 0
+    END) AS delayed_orders,
+    ROUND(SUM(CASE
+                WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+                ELSE 0
+            END) * 100.0 / COUNT(*),
+            2) AS delay_rate_pct
+FROM
+    order_items oi
+        JOIN
+    orders o ON oi.order_id = o.order_id
+GROUP BY oi.seller_id
+HAVING total_orders >= 50
+ORDER BY delay_rate_pct DESC
+LIMIT 25;
+
