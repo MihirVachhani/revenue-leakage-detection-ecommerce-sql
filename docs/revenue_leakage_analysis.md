@@ -516,4 +516,230 @@ Review Score between 4.0 and 4.2
 
 OR
 
-Delay Rate between
+Delay Rate between 10% and 15%
+
+### Low Risk Seller
+
+Review Score > 4.2
+
+AND
+
+Delay Rate < 10%
+
+### Interpretation
+
+The framework enables sellers to be evaluated using operational performance rather than revenue alone.
+
+This approach helps identify sellers whose behaviour may negatively impact customer satisfaction and future revenue generation.
+
+---
+
+# Section 13: Seller Risk Score Dataset
+
+## Related Business Questions
+
+- BQ14
+- BQ15
+
+### Business Question
+
+Which sellers combine high revenue contribution, poor delivery performance, and weak customer satisfaction?
+
+### Result
+
+Top Seller Risk Indicators:
+
+| Seller ID | Revenue | Delay Rate | Avg Review Score |
+|------------|-----------:|-----------:|-----------:|
+| 4a3ca9315b744ce9f8e9374361493884 | 202,999.12 | 11.96% | 3.80 |
+| 7c67e1448b00f6e969d365cea6b010ab | 189,417.67 | 13.34% | 3.35 |
+| 1025f0e2d44d7041d6cf58b6550e0bfa | 140,513.14 | 14.32% | 3.85 |
+| 6560211a19b47992c3666cc44a7e94c0 | 123,585.82 | 6.74% | 3.91 |
+
+### Interpretation
+
+Some of the marketplace's largest revenue contributors also receive below-average customer ratings.
+
+These sellers create elevated operational risk because performance issues affect a larger volume of marketplace revenue.
+
+---
+
+# Section 14: High-Risk Seller Identification
+
+## Related Business Question
+
+BQ15
+
+### Business Question
+
+Which sellers exhibit both poor customer satisfaction and high delivery delay rates?
+
+### High-Risk Seller Criteria
+
+- Review Score < 4.0
+- Delay Rate > 15%
+
+### Result
+
+| Seller ID | Revenue | Review Score | Delay Rate |
+|------------|-----------:|-----------:|-----------:|
+| 8160255418d5aaa7dbdc9f4c64ebda44 | 47,297.39 | 3.84 | 19.74% |
+| 712e6ed8aa4aa1fa65dab41fed5737e4 | 39,907.00 | 3.46 | 22.78% |
+| e9bc59e7b60fc3063eb2290deda4cced | 34,343.06 | 3.94 | 15.28% |
+| 88460e8ebdecbfecb5f9601833981930 | 32,410.65 | 3.35 | 23.79% |
+
+### Interpretation
+
+These sellers display both poor fulfilment performance and reduced customer satisfaction.
+
+The combination suggests a heightened risk of future revenue loss through customer dissatisfaction and negative marketplace perception.
+
+---
+
+# Section 15: Revenue Exposure from High-Risk Sellers
+
+## Related Business Question
+
+BQ15
+
+### Business Question
+
+How much marketplace revenue is associated with high-risk sellers?
+
+### Result
+
+| Metric | Value |
+|----------|----------:|
+| High-Risk Sellers | 308 |
+| Revenue At Risk | 1,019,168.93 |
+
+### Interpretation
+
+The marketplace contains 308 sellers classified as high risk.
+
+Together these sellers account for over 1 million in revenue exposure.
+
+This indicates that seller-related operational issues represent a meaningful source of potential revenue leakage.
+
+---
+
+# Section 16: High-Risk Sellers by Revenue Impact
+
+## Related Business Question
+
+BQ15
+
+### Business Question
+
+Which high-risk sellers have the greatest financial impact?
+
+### Result
+
+Top High-Risk Sellers:
+
+| Seller ID | Revenue |
+|------------|-----------:|
+| 8160255418d5aaa7dbdc9f4c64ebda44 | 47,297.39 |
+| 712e6ed8aa4aa1fa65dab41fed5737e4 | 39,907.00 |
+| e9bc59e7b60fc3063eb2290deda4cced | 34,343.06 |
+| 88460e8ebdecbfecb5f9601833981930 | 32,410.65 |
+
+### Interpretation
+
+A relatively small group of sellers contributes disproportionate operational risk.
+
+Targeted interventions among these sellers could provide an efficient method for reducing revenue leakage exposure.
+
+---
+
+# Section 17: Revenue Leakage Exposure by Product Category
+
+## Related Business Question
+
+BQ7
+
+### Business Question
+
+Which product categories contribute most to delayed revenue exposure?
+
+### Result
+
+Top Categories:
+
+| Category | Delayed Revenue |
+|----------|-----------:|
+| beleza_saude | 112,476.28 |
+| relogios_presentes | 104,208.59 |
+| cama_mesa_banho | 92,757.47 |
+| esporte_lazer | 85,365.79 |
+| informatica_acessorios | 73,859.49 |
+
+### Interpretation
+
+Revenue leakage is concentrated among several high-performing product categories.
+
+Improving delivery reliability in these categories may provide the largest operational benefit.
+
+---
+
+# Section 18: Geographic Revenue Exposure
+
+## Related Business Question
+
+BQ9
+
+### Business Question
+
+Which states contribute most to delayed revenue exposure?
+
+### Result
+
+| State | Delayed Revenue |
+|----------|-----------:|
+| SP | 342,232.40 |
+| RJ | 238,881.29 |
+| MG | 91,870.72 |
+| BA | 71,874.01 |
+| RS | 53,403.81 |
+
+### Interpretation
+
+The largest delayed-revenue exposure is concentrated within São Paulo and Rio de Janeiro.
+
+These regions should be prioritised when investigating logistics-related operational improvements.
+
+---
+
+# Section 19: Marketplace Risk Summary
+
+## Executive Risk Metrics
+
+| Metric | Value |
+|----------|----------:|
+| Cancelled Orders | 625 |
+| Unavailable Orders | 609 |
+| Delayed Orders | 7,826 |
+
+### Interpretation
+
+Delayed deliveries occur significantly more frequently than cancellations or unavailable orders.
+
+This reinforces earlier findings that delivery performance is the primary operational risk area.
+
+---
+
+# Section 20: Executive Revenue Leakage Dataset
+
+## Result
+
+| Leakage Source | Revenue Exposure |
+|----------|----------:|
+| Cancelled Revenue | 95,235.27 |
+| Unavailable Revenue | 2,007.69 |
+| Delayed Revenue | 1,158,920.51 |
+
+### Interpretation
+
+Delayed deliveries account for the vast majority of identified revenue exposure.
+
+---
