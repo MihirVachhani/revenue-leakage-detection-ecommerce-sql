@@ -228,7 +228,6 @@ LIMIT 25;
 SELLER RISK SCORE DATASET
 Purpose: Combine revenue, review score and delay rate into one seller performance view.
 */
-
 SELECT 
     oi.seller_id,
     ROUND(SUM(oi.price), 2) AS revenue,
@@ -259,7 +258,6 @@ HIGH-RISK SELLER IDENTIFICATION
 Definition: High Risk Seller: Review Score < 4.0 AND Delay Rate > 15%
 Purpose: Identify sellers creating operational and customer experience risks.
 */
-
 WITH seller_metrics AS (
     SELECT 
         oi.seller_id,
@@ -299,7 +297,6 @@ REVENUE EXPOSURE FROM HIGH-RISK SELLERS
 Purpose:Quantify potential revenue exposure linked to sellers showing poor customer satisfaction and high delay rates.
 Risk Definition: Review Score < 4 AND Delay Rate > 15
 */
-
 WITH seller_metrics AS (
     SELECT 
         oi.seller_id,
@@ -334,7 +331,6 @@ WHERE review_score < 4
 HIGH-RISK SELLERS BY REVENUE
 Purpose: Identify which risky sellers have the largest financial impact on the marketplace.
 */
-
 WITH seller_metrics AS (
     SELECT 
         oi.seller_id,
@@ -368,3 +364,106 @@ WHERE review_score < 4
 ORDER BY 
     revenue DESC
 LIMIT 20;
+
+
+/*
+REVENUE LEAKAGE EXPOSURE BY CATEGORY
+Business Purpose: Identify categories contributing most to operational risk.
+Includes: Delayed Deliveries
+*/
+SELECT 
+    p.product_category_name,
+    ROUND(SUM(oi.price), 2) AS delayed_revenue
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+        JOIN
+    products p ON oi.product_id = p.product_id
+WHERE
+    o.order_status = 'delivered'
+        AND o.order_delivered_customer_date > o.order_estimated_delivery_date
+GROUP BY p.product_category_name
+ORDER BY delayed_revenue DESC;
+
+
+/*
+GEOGRAPHIC REVENUE EXPOSURE
+Purpose: Determine which customer states are associated with the largest amount of delayed revenue.
+*/
+SELECT 
+    c.customer_state, ROUND(SUM(oi.price), 2) AS delayed_revenue
+FROM
+    orders o
+        JOIN
+    customers c ON o.customer_id = c.customer_id
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+WHERE
+    o.order_status = 'delivered'
+        AND o.order_delivered_customer_date > o.order_estimated_delivery_date
+GROUP BY c.customer_state
+ORDER BY delayed_revenue DESC;
+
+
+/*
+MARKETPLACE RISK SUMMARY
+Purpose: Create executive-level summary metrics.
+These KPIs will useful later in Power BI.
+*/
+SELECT 
+    (SELECT 
+            COUNT(*)
+        FROM
+            orders
+        WHERE
+            order_status = 'canceled') AS cancelled_orders,
+    (SELECT 
+            COUNT(*)
+        FROM
+            orders
+        WHERE
+            order_status = 'unavailable') AS unavailable_orders,
+    (SELECT 
+            SUM(CASE
+                    WHEN order_delivered_customer_date > order_estimated_delivery_date THEN 1
+                    ELSE 0
+                END)
+        FROM
+            orders
+        WHERE
+            order_status = 'delivered') AS delayed_orders;
+            
+            
+/*
+EXECUTIVE REVENUE LEAKAGE DATASET
+Purpose: Generate all core business metrics required for the executive dashboard.
+*/
+SELECT 
+    'Cancelled Revenue' AS leakage_type,
+    ROUND(SUM(oi.price), 2) AS revenue_exposure
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+WHERE
+    o.order_status = 'canceled' 
+UNION ALL SELECT 
+    'Unavailable Revenue', ROUND(SUM(oi.price), 2)
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+WHERE
+    o.order_status = 'unavailable' 
+UNION ALL SELECT 
+    'Delayed Revenue', ROUND(SUM(oi.price), 2)
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+WHERE
+    o.order_status = 'delivered'
+        AND o.order_delivered_customer_date > o.order_estimated_delivery_date;
+        
+        
