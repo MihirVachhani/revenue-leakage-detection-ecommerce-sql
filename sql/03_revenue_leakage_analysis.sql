@@ -223,3 +223,148 @@ HAVING total_orders >= 50
 ORDER BY delay_rate_pct DESC
 LIMIT 25;
 
+
+/*
+SELLER RISK SCORE DATASET
+Purpose: Combine revenue, review score and delay rate into one seller performance view.
+*/
+
+SELECT 
+    oi.seller_id,
+    ROUND(SUM(oi.price), 2) AS revenue,
+    COUNT(DISTINCT oi.order_id) AS total_orders,
+    SUM(CASE
+        WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+        ELSE 0
+    END) AS delayed_orders,
+    ROUND(SUM(CASE
+                WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+                ELSE 0
+            END) * 100.0 / COUNT(DISTINCT oi.order_id),
+            2) AS delay_rate_pct,
+    ROUND(AVG(r.review_score), 2) AS avg_review_score
+FROM
+    order_items oi
+        JOIN
+    orders o ON oi.order_id = o.order_id
+        LEFT JOIN
+    reviews r ON o.order_id = r.order_id
+GROUP BY oi.seller_id
+HAVING total_orders >= 50
+ORDER BY revenue DESC;
+
+
+/*
+HIGH-RISK SELLER IDENTIFICATION
+Definition: High Risk Seller: Review Score < 4.0 AND Delay Rate > 15%
+Purpose: Identify sellers creating operational and customer experience risks.
+*/
+
+WITH seller_metrics AS (
+    SELECT 
+        oi.seller_id,
+        ROUND(SUM(oi.price), 2) AS revenue,
+        ROUND(AVG(r.review_score), 2) AS review_score,
+        ROUND(
+            SUM(
+                CASE 
+                    WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1 
+                    ELSE 0 
+                END
+            ) * 100.0 / COUNT(DISTINCT oi.order_id), 
+            2
+        ) AS delay_rate
+    FROM order_items AS oi
+    JOIN orders AS o 
+        ON oi.order_id = o.order_id
+    LEFT JOIN reviews AS r 
+        ON o.order_id = r.order_id
+    GROUP BY 
+        oi.seller_id
+)
+SELECT 
+    seller_id,
+    revenue,
+    review_score,
+    delay_rate
+FROM seller_metrics
+WHERE review_score < 4
+  AND delay_rate > 15
+ORDER BY 
+    revenue DESC;
+
+
+/*
+REVENUE EXPOSURE FROM HIGH-RISK SELLERS
+Purpose:Quantify potential revenue exposure linked to sellers showing poor customer satisfaction and high delay rates.
+Risk Definition: Review Score < 4 AND Delay Rate > 15
+*/
+
+WITH seller_metrics AS (
+    SELECT 
+        oi.seller_id,
+        ROUND(SUM(oi.price), 2) AS revenue,
+        ROUND(AVG(r.review_score), 2) AS review_score,
+        ROUND(
+            SUM(
+                CASE 
+                    WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1 
+                    ELSE 0 
+                END
+            ) * 100.0 / COUNT(DISTINCT oi.order_id), 
+            2
+        ) AS delay_rate
+    FROM order_items AS oi
+    JOIN orders AS o 
+        ON oi.order_id = o.order_id
+    LEFT JOIN reviews AS r 
+        ON o.order_id = r.order_id
+    GROUP BY 
+        oi.seller_id
+)
+SELECT 
+    COUNT(*) AS high_risk_sellers,
+    ROUND(SUM(revenue), 2) AS revenue_at_risk
+FROM seller_metrics
+WHERE review_score < 4
+  AND delay_rate > 15;
+
+
+/*
+HIGH-RISK SELLERS BY REVENUE
+Purpose: Identify which risky sellers have the largest financial impact on the marketplace.
+*/
+
+WITH seller_metrics AS (
+    SELECT 
+        oi.seller_id,
+        ROUND(SUM(oi.price), 2) AS revenue,
+        ROUND(AVG(r.review_score), 2) AS review_score,
+        ROUND(
+            SUM(
+                CASE 
+                    WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1 
+                    ELSE 0 
+                END
+            ) * 100.0 / COUNT(DISTINCT oi.order_id), 
+            2
+        ) AS delay_rate
+    FROM order_items AS oi
+    JOIN orders AS o 
+        ON oi.order_id = o.order_id
+    LEFT JOIN reviews AS r 
+        ON o.order_id = r.order_id
+    GROUP BY 
+        oi.seller_id
+)
+SELECT 
+    seller_id,
+    revenue,
+    review_score,
+    delay_rate
+FROM seller_metrics
+WHERE review_score < 4
+  AND delay_rate > 15
+ORDER BY 
+    revenue DESC
+LIMIT 20;
