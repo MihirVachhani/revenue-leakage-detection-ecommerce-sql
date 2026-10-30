@@ -467,3 +467,65 @@ WHERE
         AND o.order_delivered_customer_date > o.order_estimated_delivery_date;
         
         
+/*
+REVENUE LEAKAGE MIX ANALYSIS
+Purpose: Executive teams need to understand where improvement efforts should be prioritised.
+*/
+WITH leakage_sources AS (
+    SELECT 
+        'Cancelled Revenue' AS leakage_type,
+        SUM(oi.price) AS revenue
+    FROM orders AS o
+    JOIN order_items AS oi
+        ON o.order_id = oi.order_id
+    WHERE o.order_status = 'canceled'
+    UNION ALL
+    SELECT 
+        'Unavailable Revenue' AS leakage_type,
+        SUM(oi.price) AS revenue
+    FROM orders AS o
+    JOIN order_items AS oi
+        ON o.order_id = oi.order_id
+    WHERE o.order_status = 'unavailable'
+    UNION ALL
+    SELECT 
+        'Delayed Revenue' AS leakage_type,
+        SUM(oi.price) AS revenue
+    FROM orders AS o
+    JOIN order_items AS oi
+        ON o.order_id = oi.order_id
+    WHERE o.order_status = 'delivered'
+      AND o.order_delivered_customer_date > o.order_estimated_delivery_date
+)
+SELECT 
+    leakage_type,
+    ROUND(revenue, 2) AS revenue,
+    ROUND(
+        revenue * 100.0 / SUM(revenue) OVER (), 
+        2
+    ) AS leakage_contribution_pct
+FROM leakage_sources
+ORDER BY 
+    revenue DESC;
+
+
+/*
+DELAYED REVENUE CONCENTRATION
+Purpose: Identify categories responsible for the majority of delayed-revenue exposure.
+*/
+SELECT 
+    p.product_category_name,
+    ROUND(SUM(oi.price), 2) AS delayed_revenue
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+        JOIN
+    products p ON oi.product_id = p.product_id
+WHERE
+    o.order_status = 'delivered'
+        AND o.order_delivered_customer_date > o.order_estimated_delivery_date
+GROUP BY p.product_category_name
+ORDER BY delayed_revenue DESC
+LIMIT 20;
+
