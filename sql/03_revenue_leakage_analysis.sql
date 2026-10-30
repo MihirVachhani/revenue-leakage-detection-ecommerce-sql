@@ -529,3 +529,74 @@ GROUP BY p.product_category_name
 ORDER BY delayed_revenue DESC
 LIMIT 20;
 
+
+/*
+REVENUE AT RISK VS TOTAL GMV
+Purpose: Determine what percentage of total marketplace revenue is exposed to operational risk.
+*/
+WITH risk_revenue AS (
+    SELECT 
+        SUM(oi.price) AS delayed_revenue
+    FROM orders AS o
+    JOIN order_items AS oi
+        ON o.order_id = oi.order_id
+    WHERE o.order_status = 'delivered'
+      AND o.order_delivered_customer_date > o.order_estimated_delivery_date
+)
+SELECT 
+    ROUND((SELECT delayed_revenue FROM risk_revenue), 2) AS revenue_at_risk,
+    ROUND(SUM(price), 2) AS total_gmv,
+    ROUND(
+        (SELECT delayed_revenue FROM risk_revenue) * 100.0 / SUM(price), 
+        2
+    ) AS pct_gmv_at_risk
+FROM order_items;
+
+
+
+/*
+EXECUTIVE REVENUE LEAKAGE SCORECARD
+Purpose: Generate one-table executive summary for Power BI KPI cards.
+*/
+SELECT 
+    (SELECT 
+            COUNT(*)
+        FROM
+            orders) AS total_orders,
+    (SELECT 
+            COUNT(*)
+        FROM
+            sellers) AS total_sellers,
+    (SELECT 
+            ROUND(SUM(price), 2)
+        FROM
+            order_items) AS total_gmv,
+    (SELECT 
+            ROUND(SUM(freight_value), 2)
+        FROM
+            order_items) AS freight_cost,
+    (SELECT 
+            COUNT(*)
+        FROM
+            orders
+        WHERE
+            order_status = 'canceled') AS cancelled_orders,
+    (SELECT 
+            COUNT(*)
+        FROM
+            orders
+        WHERE
+            order_status = 'unavailable') AS unavailable_orders,
+    (SELECT 
+            SUM(CASE
+                    WHEN order_delivered_customer_date > order_estimated_delivery_date THEN 1
+                    ELSE 0
+                END)
+        FROM
+            orders
+        WHERE
+            order_status = 'delivered') AS delayed_orders,
+    (SELECT 
+            ROUND(AVG(review_score), 2)
+        FROM
+            reviews) AS avg_review_score;
