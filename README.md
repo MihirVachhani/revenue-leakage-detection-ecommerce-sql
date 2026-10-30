@@ -4,9 +4,9 @@
 
 This project investigates operational factors that may contribute to revenue leakage within a multi-seller e-commerce marketplace.
 
-Using the Olist Brazilian E-Commerce Dataset, the project combines SQL-based analysis, business KPIs, and stakeholder-focused reporting to identify areas where operational inefficiencies may negatively impact marketplace performance.
+Using the Olist Brazilian E-Commerce Dataset, the project combines SQL-based analysis, KPI development, seller risk assessment, and stakeholder-focused reporting to identify operational inefficiencies that may negatively impact marketplace performance.
 
-Instead of focusing solely on revenue generation, the project investigates:
+Rather than focusing solely on revenue generation, this project investigates:
 
 - Order Cancellations
 - Unavailable Orders
@@ -14,16 +14,18 @@ Instead of focusing solely on revenue generation, the project investigates:
 - Freight Cost Burden
 - Customer Satisfaction Risks
 - Seller Performance Issues
+- Revenue Leakage Exposure
+- Operational Risk Concentration
 
-The goal is to identify operational weaknesses and quantify their potential business impact.
+The objective is to identify hidden operational risks and quantify their potential business impact.
 
 ---
 
 # Business Problem
 
-The marketplace processes thousands of customer orders through multiple sellers.
+The marketplace processes thousands of customer orders through multiple independent sellers.
 
-While revenue growth is important, operational inefficiencies such as order cancellations, delivery delays, and poor customer experiences may create hidden revenue leakage.
+While overall revenue growth is important, operational inefficiencies such as delayed deliveries, order cancellations, poor seller performance, and customer dissatisfaction may create hidden forms of revenue leakage.
 
 This project seeks to answer:
 
@@ -33,11 +35,11 @@ This project seeks to answer:
 
 # Dataset
 
-Source:
+### Source
 
-Olist Brazilian E-Commerce Dataset
+Olist Brazilian E-Commerce Public Dataset
 
-Dataset includes:
+### Dataset Includes
 
 - Customers
 - Orders
@@ -47,7 +49,19 @@ Dataset includes:
 - Payments
 - Reviews
 - Geolocation
-- Product Categories
+- Product Category Translation
+
+### Dataset Scale
+
+| Entity | Records |
+|----------|----------:|
+| Customers | 99,441 |
+| Orders | 99,441 |
+| Order Items | 112,650 |
+| Products | 32,951 |
+| Sellers | 3,095 |
+| Reviews | 100,000+ |
+| Payments | 103,886 |
 
 ---
 
@@ -57,8 +71,9 @@ Dataset includes:
 - SQL
 - Python
 - Jupyter Notebook
-- GitHub
 - Power BI (Upcoming)
+- Git
+- GitHub
 
 ---
 
@@ -67,11 +82,28 @@ Dataset includes:
 ```text
 Revenue-Leakage-SQL-Project
 
-├── data/
-├── docs/
-├── notebooks/
-├── sql/
-├── images/
+├── assets
+│   └── images
+│
+├── data
+│
+├── docs
+│   ├── business_questions.md
+│   ├── data_quality_report.md
+│   ├── exploratory_analysis.md
+│   ├── exploratory_analysis_results.md
+│   ├── kpi_framework.md
+│   ├── revenue_leakage_analysis.md
+│   └── project_summary.md
+│
+├── notebooks
+│   └── database_setup.ipynb
+│
+├── sql
+│   ├── 01_data_quality_checks.sql
+│   ├── 02_exploratory_analysis.sql
+│   └── 03_revenue_leakage_analysis.sql
+│
 └── README.md
 ```
 
@@ -79,27 +111,29 @@ Revenue-Leakage-SQL-Project
 
 # Project Roadmap
 
-## Phase 1: Project Planning
+## Phase 1 — Business Understanding
 
-✅ Business Problem Definition
+✅ Problem Definition
 
-✅ Dataset Selection
+✅ Stakeholder Identification
 
----
-
-## Phase 2: Database Development
-
-✅ MySQL Database Creation
-
-✅ ETL Pipeline Development
-
-✅ Schema Design
-
-✅ Primary Key Implementation
+✅ Success Criteria
 
 ---
 
-## Phase 3: Data Quality Assessment
+## Phase 2 — Database Preparation
+
+✅ Database Creation
+
+✅ Data Loading
+
+✅ Data Modelling
+
+✅ Schema Validation
+
+---
+
+## Phase 3 — Data Quality Assessment
 
 ✅ Record Count Validation
 
@@ -107,27 +141,31 @@ Revenue-Leakage-SQL-Project
 
 ✅ Duplicate Detection
 
-✅ Referential Integrity Checks
+✅ Referential Integrity Verification
 
 ✅ Data Quality Report
 
 ---
 
-## Phase 4: KPI Framework Development
+## Phase 4 — KPI Framework Development
 
-✅ KPI Definition
+✅ KPI Identification
 
 ✅ Stakeholder Mapping
 
 ✅ Business Question Framework
 
+✅ Metric Definitions
+
 ---
 
-## Phase 5: Exploratory Business Analysis
+## Phase 5 — Exploratory Business Analysis
 
 ✅ Marketplace Scale Assessment
 
 ✅ Revenue Baseline Analysis
+
+✅ Category Performance Analysis
 
 ✅ Seller Ecosystem Analysis
 
@@ -137,76 +175,210 @@ Revenue-Leakage-SQL-Project
 
 ---
 
-## Phase 6: Revenue Leakage Analysis
+## Phase 6 — Revenue Leakage Analysis
 
-🚧 In Progress
+✅ Cancellation Analysis
 
-Planned Analysis:
+✅ Unavailable Order Analysis
 
-- Cancellation Analysis
-- Unavailable Order Analysis
-- Delivery Delay Analysis
-- Seller Risk Analysis
-- Customer Experience Analysis
-- Revenue Leakage Exposure Framework
+✅ Delivery Delay Analysis
+
+✅ Customer Experience Analysis
+
+✅ Geographic Risk Analysis
+
+✅ Product Category Risk Analysis
+
+✅ Seller Risk Framework
+
+✅ Revenue Exposure Assessment
+
+✅ Executive Leakage Scorecard
 
 ---
 
-## Phase 7: Power BI Dashboard
+## Phase 7 — Power BI Dashboard Development
 
-⏳ Planned
+⏳ Upcoming
 
-Dashboard Components:
+Planned Dashboard Pages:
 
 - Executive Summary
-- Revenue Performance
-- Revenue Leakage Drivers
-- Delivery Performance
-- Seller Risk Scorecard
-- Customer Satisfaction Metrics
+- Revenue Leakage Overview
+- Delivery Performance Analysis
+- Seller Risk Framework
+- Customer Experience Analysis
 
 ---
 
-# Key Findings So Far
+## Phase 8 — Executive Reporting
 
-### Marketplace Scale
+⏳ Upcoming
 
-- 99,441 Customers
-- 99,441 Orders
-- 112,650 Order Items
-- 32,951 Products
-- 3,095 Sellers
+Deliverables:
 
-### Revenue Metrics
+- Executive Business Presentation
+- Power BI Dashboard
+- Final Business Recommendations
 
-- GMV: 13.59 Million
-- Freight Cost: 2.25 Million
-- Freight Burden: 16.57%
+---
 
-### Customer Experience
+# Key Marketplace Metrics
 
-- Average Review Score: 4.09 / 5
+## Marketplace Scale
 
-### Delivery Performance
+| KPI | Value |
+|----------|----------:|
+| Customers | 99,441 |
+| Orders | 99,441 |
+| Sellers | 3,095 |
+| Products | 32,951 |
+| Order Items | 112,650 |
 
-- Delivered Orders: 96,478
-- Delayed Deliveries: 7,826
-- Delay Rate: 8.11%
+---
+
+## Revenue Metrics
+
+| KPI | Value |
+|----------|----------:|
+| Total GMV | 13,591,643.70 |
+| Freight Cost | 2,251,909.54 |
+| Freight Burden | 16.57% |
+
+---
+
+## Customer Satisfaction
+
+| KPI | Value |
+|----------|----------:|
+| Average Review Score | 4.09 |
+
+---
+
+## Delivery Performance
+
+| KPI | Value |
+|----------|----------:|
+| Delivered Orders | 96,478 |
+| Delayed Orders | 7,826 |
+| Delay Rate | 8.11% |
+
+---
+
+# Revenue Leakage Findings
+
+## Revenue Exposure by Leakage Type
+
+| Leakage Source | Revenue Exposure | Contribution |
+|----------|----------:|----------:|
+| Delayed Deliveries | 1,158,920.51 | 92.26% |
+| Cancelled Orders | 95,235.27 | 7.58% |
+| Unavailable Orders | 2,007.69 | 0.16% |
+
+### Key Insight
+
+Delivery delays account for over 92% of identified revenue leakage exposure.
+
+---
+
+## Customer Experience Impact
+
+| Delivery Status | Average Review Score |
+|----------|----------:|
+| On-Time | 4.29 |
+| Delayed | 2.57 |
+
+### Key Insight
+
+Delayed deliveries reduce average customer review scores by approximately 40%.
+
+---
+
+## Revenue at Risk
+
+| KPI | Value |
+|----------|----------:|
+| Revenue at Risk | 1,158,920.51 |
+| Total GMV | 13,591,643.70 |
+| GMV at Risk | 8.53% |
+
+### Key Insight
+
+More than 8.5% of marketplace revenue is associated with delayed deliveries.
+
+---
+
+## Seller Risk Framework
+
+### High-Risk Seller Criteria
+
+- Review Score < 4.0
+- Delay Rate > 15%
+
+### Results
+
+| KPI | Value |
+|----------|----------:|
+| High-Risk Sellers | 308 |
+| Revenue at Risk | 1,019,168.93 |
+
+### Key Insight
+
+A relatively small group of sellers generates a substantial share of operational risk.
+
+---
+
+# Business Recommendations
+
+## 1. Prioritise Delivery Performance
+
+Since delayed deliveries account for over 92% of identified revenue leakage exposure, operational improvement efforts should focus on logistics performance.
+
+## 2. Monitor High-Risk Sellers
+
+Implement seller performance monitoring for:
+
+- Review Scores
+- Delay Rates
+- Revenue Exposure
+
+## 3. Focus on High-Risk Categories
+
+Target improvements within:
+
+- Health & Beauty
+- Watches & Gifts
+- Home & Bath
+- Sports & Leisure
+
+## 4. Improve Logistics in Key States
+
+Prioritise:
+
+- São Paulo (SP)
+- Rio de Janeiro (RJ)
+- Minas Gerais (MG)
 
 ---
 
 # Repository Status
 
-Current Phase:
+## Current Status
 
-✅ Phase 5 Complete
+✅ SQL Analysis Complete
 
-🚧 Phase 6 In Progress
+✅ Documentation Complete
+
+⏳ Power BI Dashboard Development
+
+⏳ Executive Presentation
 
 ---
 
 # Author
 
-Mihir R. Vachhani
+**Mihir R. Vachhani**
 
 Aspiring Data Analyst | SQL | Python | Power BI
+
+GitHub Portfolio Project: Revenue Leakage Detection in an E-Commerce Marketplace
