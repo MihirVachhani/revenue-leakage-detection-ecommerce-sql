@@ -789,3 +789,73 @@ Leading categories include:
 Operational improvements targeted at a small number of categories could substantially reduce delayed revenue exposure.
 
 ---
+
+# Section 23: Revenue At Risk vs Total GMV
+
+## Business Question
+
+What percentage of marketplace revenue is operationally at risk?
+
+### Result
+
+| Metric | Value |
+|----------|----------:|
+| Revenue At Risk | 1,158,920.51 |
+| Total GMV | 13,591,643.70 |
+| GMV At Risk | 8.53% |
+
+### Interpretation
+
+More than 8.5% of marketplace revenue is associated with delayed deliveries.
+
+This indicates a meaningful level of operational risk exposure.
+
+---
+
+# Section 24: Executive Revenue Leakage Scorecard
+
+## Marketplace Summary
+
+| KPI | Value |
+|----------|----------:|
+| Total Orders | 99,441 |
+| Total Sellers | 3,095 |
+| Total GMV | 13,591,643.70 |
+| Freight Cost | 2,251,909.54 |
+| Cancelled Orders | 625 |
+| Unavailable Orders | 609 |
+| Delayed Orders | 7,826 |
+| Average Review Score | 4.09 |
+
+---
+
+# Final Revenue Leakage Assessment
+
+## Key Findings
+
+1. Delivery delays account for 92.26% of all identified revenue leakage exposure.
+2. Delayed deliveries are associated with 1.16 million in revenue exposure.
+3. Customer satisfaction declines from 4.29 to 2.57 when deliveries are delayed.
+4. 8.53% of total marketplace GMV is exposed to delivery-performance risk.
+5. 308 sellers qualify as high-risk sellers under the Seller Risk Framework.
+6. High-risk sellers represent over 1 million in revenue exposure.
+7. Revenue leakage is concentrated among a relatively small number of categories, sellers, and geographic regions.
+
+---
+
+# Final Conclusion
+
+The analysis demonstrates that delivery performance is the single largest operational driver of revenue leakage within the marketplace.
+
+While cancellations and unavailable orders contribute some revenue exposure, their impact is relatively small when compared to delayed deliveries.
+
+The Seller Risk Framework further reveals that a subset of sellers account for a disproportionate share of operational risk.
+
+Future business improvement initiatives should prioritise:
+
+- Delivery performance optimisation
+- Seller performance monitoring
+- Logistics improvements in high-risk states
+- Operational controls for high-risk sellers
+
+Addressing these areas would likely improve customer satisfaction, reduce operational inefficiencies, and protect future marketplace revenue.
