@@ -82,8 +82,10 @@ Olist Brazilian E-Commerce Public Dataset
 ```text
 Revenue-Leakage-SQL-Project
 
-├── assets
-│   └── images
+├── images
+│   ├── data_quality
+│   ├── exploratory_analysis
+│   └── revenue_leakage
 │
 ├── data
 │
