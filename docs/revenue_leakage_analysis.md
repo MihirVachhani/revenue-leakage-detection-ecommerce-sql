@@ -743,3 +743,49 @@ This reinforces earlier findings that delivery performance is the primary operat
 Delayed deliveries account for the vast majority of identified revenue exposure.
 
 ---
+
+# Section 21: Revenue Leakage Mix Analysis
+
+## Business Question
+
+Which issue contributes most to overall revenue leakage exposure?
+
+### Result
+
+| Leakage Type | Revenue | Contribution |
+|----------|----------:|----------:|
+| Delayed Revenue | 1,158,920.51 | 92.26% |
+| Cancelled Revenue | 95,235.27 | 7.58% |
+| Unavailable Revenue | 2,007.69 | 0.16% |
+
+### Interpretation
+
+Over 92% of all identified revenue leakage exposure is linked to delayed deliveries.
+
+This is the strongest evidence in the analysis and clearly identifies delivery performance as the dominant operational risk.
+
+---
+
+# Section 22: Delayed Revenue Concentration
+
+## Business Question
+
+Is delayed revenue concentrated within a small number of categories?
+
+### Result
+
+Top categories account for a significant share of delayed revenue exposure.
+
+Leading categories include:
+
+- Health & Beauty
+- Watches & Gifts
+- Home & Bath
+- Sports & Leisure
+- Electronics Accessories
+
+### Interpretation
+
+Operational improvements targeted at a small number of categories could substantially reduce delayed revenue exposure.
+
+---
